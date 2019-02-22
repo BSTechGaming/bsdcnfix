@@ -19,7 +19,7 @@ BOOL __stdcall iterator(HMONITOR h, HDC, LPRECT, LPARAM) //Callback function for
 	{
 		g_Rect = mi.rcWork;
 		b_Found = true;
-		printf_s("Non-primary monitor found, w=%d, h=%d\n", mi.rcWork.right - mi.rcWork.left, mi.rcWork.bottom - mi.rcWork.top);
+		printf_s("Monitor found, w=%d, h=%d\n", mi.rcWork.right - mi.rcWork.left, mi.rcWork.bottom - mi.rcWork.top);
 	}
 	return true; //Exit at the first item
 }
@@ -48,7 +48,7 @@ int __stdcall WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 			SetWindowPos(nt, 0, g_Rect.right - (r.right - r.left), g_Rect.bottom - (r.bottom - r.top), 0, 0, SWP_NOSIZE); //...then move it to the right-bottom of the screen as the original one would be
 		}
 		nt = FindWindowA("Chrome_WidgetWin_1", "Discord Notifications"); //Update the window handle if there's something changed
-																		 //(for example when there is no notification, the panel window gets destroyed (nt = NULL), otherwise it's created again)
+										 //(for example when there is no notification, the panel window gets destroyed (nt = NULL), otherwise it's created again)
 	}
 	return S_OK;
 }
